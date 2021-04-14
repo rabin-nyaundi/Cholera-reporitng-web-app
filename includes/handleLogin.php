@@ -48,7 +48,7 @@
         }
     }
     else{
-        echo "Failed to post at Isset post";
+        // echo "Failed to post at Isset post";
     }
 
 ?>

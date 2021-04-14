@@ -199,7 +199,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                                 <div class="modal-body">
                                     <div class="row p-2 form-group">
                                         <label for="region"> Region <br>
-                                            <input list="regions" class="form-control" type="text" name="region" id="area_region">
+                                            <input list="regions" class="form-control" type="text" name="region" id="area_region" required>
                                             <datalist id="regions">
                                                 <option value='Baringo'>Baringo</option>
                                                 <option value='Bomet'>Bomet</option>
@@ -254,19 +254,19 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                                 
                                     <div class="row p-2 form-group">
                                         <label for="district"> Area District <br>
-                                            <input class="form-control" type="text" name="district" id="area_district">
+                                            <input class="form-control" type="text" name="district" id="area_district" required>
                                         </label>
                                     </div>
 
                                     <div class="row p-2 form-group">
                                         <label for="village"> Village <br>
-                                            <input class="form-control" type="text" name="village" id="area_village">
+                                            <input class="form-control" type="text" name="village" id="area_village" required>
                                         </label>
                                     </div>
                                 
                                     <div class="row p-2">
                                         <label for="total_cases">Total Cases Reported <br>
-                                            <input class="form-control" type="number" name="total_cases" id="total-cases">
+                                            <input class="form-control" type="number" name="total_cases" id="total-cases" required>
                                         </label>
                                     </div>
 
@@ -287,7 +287,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                                 
                                     <div class="row p-2">
                                         <label for="total_deaths">Total Deaths <br>
-                                            <input class="form-control" type="number" name="total_deaths" id="total-deaths">
+                                            <input class="form-control" type="number" name="total_deaths" id="total-deaths" required>
                                         </label>
                                     </div>
 
@@ -299,7 +299,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                                 
                                     <div class="row p-2 form-group">
                                         <label for="date_reported">Date first Case reported <br>
-                                            <input class="form-control" type="date" name="date_reported" id="date_reported">
+                                            <input class="form-control" type="date" name="date_reported" id="date_reported" required>
                                         </label>
                                     </div>
                                     

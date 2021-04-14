@@ -136,15 +136,15 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                             <th scope="row"><?php echo $row['user_id']; ?></th>
                         </tr>
                         <tr>
-                            <td>Region</td>
+                            <td>First Name</td>
                             <td><?php echo $row['Firstname']; ?></td>
                         </tr>
                         <tr>
-                            <td>First Name</td>
+                            <td>Last Name</td>
                             <td><?php echo $row['Lastname']; ?></td>
                         </tr>
                         <tr>
-                            <td>Last Name </td>
+                            <td>Email </td>
                             <td><?php echo $row['Email']; ?></td>
                         </tr>
                         <?php } ?>

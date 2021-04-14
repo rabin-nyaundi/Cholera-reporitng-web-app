@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2021 at 11:44 AM
+-- Generation Time: Apr 14, 2021 at 02:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -43,6 +43,43 @@ CREATE TABLE `cholera_alert` (
   `created_by` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Table structure for table `report_status`
+--
+
+CREATE TABLE `report_status` (
+  `id` int(11) NOT NULL,
+  `stat` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `report_status`
+--
+
+INSERT INTO `report_status` (`id`, `stat`) VALUES
+(1, 'Awaiting approval'),
+(2, 'Approved\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_type`
+--
+
+CREATE TABLE `user_type` (
+  `id` int(11) NOT NULL,
+  `type` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_type`
+--
+
+INSERT INTO `user_type` (`id`, `type`) VALUES
+(1, 'Admin'),
+(2, 'User');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `zeta_users`
@@ -53,16 +90,9 @@ CREATE TABLE `zeta_users` (
   `Firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Password` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `Password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user-type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `zeta_users`
---
-
-INSERT INTO `zeta_users` (`user_id`, `Firstname`, `Lastname`, `Email`, `Password`) VALUES
-(1, 'Rabin', 'Nyaundi', 'test@gmail.com', '123456'),
-(2, 'Nyaundi', 'Rabin', 'test2@gmail.com', '123456');
 
 --
 -- Indexes for dumped tables
@@ -73,14 +103,30 @@ INSERT INTO `zeta_users` (`user_id`, `Firstname`, `Lastname`, `Email`, `Password
 --
 ALTER TABLE `cholera_alert`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`created_by`);
+  ADD KEY `user_id` (`created_by`),
+  ADD KEY `status_id` (`status`);
+
+--
+-- Indexes for table `report_status`
+--
+ALTER TABLE `report_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_type`
+--
+ALTER TABLE `user_type`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `zeta_users`
 --
 ALTER TABLE `zeta_users`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `Lastname` (`Lastname`),
+  ADD UNIQUE KEY `Lastname_2` (`Lastname`),
+  ADD KEY `user_type` (`user-type`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -93,10 +139,22 @@ ALTER TABLE `cholera_alert`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
+-- AUTO_INCREMENT for table `report_status`
+--
+ALTER TABLE `report_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_type`
+--
+ALTER TABLE `user_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `zeta_users`
 --
 ALTER TABLE `zeta_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables
@@ -106,7 +164,13 @@ ALTER TABLE `zeta_users`
 -- Constraints for table `cholera_alert`
 --
 ALTER TABLE `cholera_alert`
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`created_by`) REFERENCES `zeta_users` (`user_id`);
+  ADD CONSTRAINT `status_id` FOREIGN KEY (`status`) REFERENCES `report_status` (`id`);
+
+--
+-- Constraints for table `zeta_users`
+--
+ALTER TABLE `zeta_users`
+  ADD CONSTRAINT `user_type` FOREIGN KEY (`user-type`) REFERENCES `user_type` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
