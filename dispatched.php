@@ -124,7 +124,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
         <div class="main-content">
            <div class="container-fluid">
                <div class="row table_row">
-                <h4>All Chorela Alerts created</h4>
+                <h4 style="padding: 1rem;">Approved alerts</h4>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
@@ -182,7 +182,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                             </td>
                             
                             <td class="action">
-                                <div class="edit"><a href="editAlert.php?id=<?=$row['id']; ?>" id="btnEdit"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                                <!-- <div class="edit"><a href="editAlert.php?id=<?=$row['id']; ?>" id="btnEdit"><i class="fa fa-pencil" aria-hidden="true"></i></a></div> -->
                                 <div class="view"><a href="viewAlert.php?id=<?=$row['id']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></a></div>
                             </td>
                         </tr>

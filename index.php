@@ -254,13 +254,13 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
                                 
                                     <div class="row p-2 form-group">
                                         <label for="district"> Area District <br>
-                                            <input class="form-control" type="text" name="district" id="area_district" required>
+                                            <input class="form-control" type="text" name="district" id="area_district" autocomplete="off" required>
                                         </label>
                                     </div>
 
                                     <div class="row p-2 form-group">
                                         <label for="village"> Village <br>
-                                            <input class="form-control" type="text" name="village" id="area_village" required>
+                                            <input class="form-control" type="text" name="village" id="area_village" autocomplete="off" required>
                                         </label>
                                     </div>
                                 

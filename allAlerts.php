@@ -124,7 +124,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['loggedin'])){ ?>
         <div class="main-content">
            <div class="container-fluid">
                <div class="row table_row">
-                <h4>All Chorela Alerts created</h4>
+                <h4 style="padding: 1rem;">All Chorela Alerts created</h4>
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                         <tr>
